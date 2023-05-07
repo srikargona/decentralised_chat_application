@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <title>IPFS Chat Application</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="./bootstrap-4.5.0-dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./styles.css">
+
+    <style>
+        #page{
+            display: none;
+        }
+        #loading{
+            display: block;
+        }
+    </style>
+</head>
+
+<body style="background-color: green">
+    <div id="loading">
+        <img src="loader2.gif" alt="Page loading..." style="height: 500px; margin: auto; margin-left: 350px; margin-top: 100px;">
+    </div>
+
+    <div id="page">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" id="home-btn" href="#">IPFS Chat Application</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse navbar-right" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-btn" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="start-a-chat-btn" href="#">Start A Chat</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="card" style="color: white; background-color: rgba(255, 255, 255, 0);">
+        <div class="card-body">
+
+            <!-- Home Page -->
+            <div id='Home' style="font-size: 20px; margin-left: 15px; margin-top: 10px;">
+                <p>Your peer ID to chat is <span id="peer-id" style="color: powderblue"></span></p><br>
+                <p>This application provides interface as a regular chat application, but with the added
+                    benefits of absolute privacy and control over your own data, without the involvement of third
+                    parties. It used ipfs and3 orbit db</p><br>
+                <p>The Features :</p>
+                <ul>
+                    <li>1) Profile: Where you manage your User Profile. Contains functionality to add friends to start the chat.</li>
+                    <li>4) Start A Chat: Platform to chat with your friends.</li>
+                </ul>
+            </div>
+
+            <!-- Profile Page -->
+            <div id="Profile" style="display: none;">
+                <div class="form-group">
+                    <label for="colFormLabelLg" class="col-sm-12 col-form-label col-form-label-lg"
+                        style="font-size: 30px;"><strong>Create friend directory</strong></label><br>
+                    <p style="margin-left: 15px;"><strong>Create friend directory by adding the peer id of the friend below</strong></p>
+                    <div class="col-sm-10">
+                        <input id="create-friend-directory-peer-id" type="text" class="form-control form-control-lg" id="colFormLabelLg"
+                            placeholder="Enter the peer's peer ID">
+                    </div>
+                    <button id="create-friend-directory-btn" style="margin-left: 15px; margin-top: 20px;" class="btn btn-primary">Create Friend Directory</button><br><br>
+                </div>
+
+                <div id="public-posts-list" style="display: none;">
+                    <ul>
+                        <li>File 1</li>
+                        <li>File 2</li>
+                        <li>File 3</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Chat -->
+            <div id='Chat' style="display: none;">
+
+                <div id="Online-Offline-Friends" style="margin-left: 15px;">
+                    <h5><em>Click on an friend id to start chatting with them!</em></h5><br>
+                    <h3>Friends List:</h3>
+                    <div class="content" id="online_friends"></div>
+                    <div class="content" id="offline_friends"></div>
+                </div>
+            </div>
+            <div id='Chat-Body' style="display: none;">
+                <p style="font-size: 30px; margin-left: 15px; margin-top: 15px;">You have connected to the requested
+                    peer channel! You may begin chatting with your friend below.</p>
+                <div id='Chat-Window'
+                    style="margin-left: 15px; width: 81.3%; height: 350px; justify-self: center; overflow-y: scroll; border: 2px solid rgba(0, 0, 0, 0.5);">
+
+                </div>
+                <div class="col-sm-10">
+                    <input id="chat-message" style="margin-top: 10px; margin-bottom: 10px;" type="text"
+                class="form-control form-control-lg" id="colFormLabelLg" onkeypress="if(event.key == 'Enter') { return SendMessage(); }" placeholder="Type a message">
+                </div>
+                <button id="send-message-btn" style="margin-left: 15px;" class="btn btn-primary" onclick="return SendMessage();">Send
+                    Message</button>
+                    
+                <button id="disconnect-btn" style="margin-left: 15px;" class="btn btn-primary">Disconnect from Chat</button><br><br>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="bundle.js"></script>
+</body>
+
+</html>
+
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
