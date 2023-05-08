@@ -14,7 +14,7 @@ In windows change one paramater in package.json to
 
 After that install 2 npm packages using 
 
-**npm install http-server**
+**npm install http-server**                                                                   
 **npm install watchify**
 
 then start the server using the command
