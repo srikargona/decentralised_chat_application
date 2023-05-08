@@ -8,13 +8,15 @@ Team Members :-
 Srikar Gona(gs943)
 Nithish Komuravelli (nk793)
 
-Install Node.js in the machine.
+**Project Setup Details -** 
+
+Install **Node.js** in the machine.
 
 By using this website - https://nodejs.org/en/download
 
 In the "PATH" environment variable - add the folder where the nodejs is installed
 
-Ex - C:\Program Files\nodejs
+**Ex -** C:\Program Files\nodejs
 
 Check if Node is installed in the system by this command - **node -v**
 
