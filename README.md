@@ -1,8 +1,14 @@
 # decentralised_chat_application
+
 CS 553 Project Repo
 
+Welcome to decentralised chat application
+
+Team Members :-
 Srikar Gona(gs943)
 Nithish Komuravelli (nk793)
+
+Install Node.js in the machine. After that,
 
 Run the following in the Project Root Folder
 
